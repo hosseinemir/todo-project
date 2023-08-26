@@ -32,7 +32,7 @@ export default function Layout({ children }) {
             </li>
             <li>
               <BiMessageSquareAdd />
-              <Link href={"/"}>add todo</Link>
+              <Link href={"/add-todo"}>add todo</Link>
             </li>
             <li>
               <RxDashboard />

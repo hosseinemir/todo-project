@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    align-items: center;
+    
+    
+}
+.container label{
+    padding: 5px 0;
+    cursor: pointer;
+
+
+}
+.container>*{
+    margin-right: 5px;
+}

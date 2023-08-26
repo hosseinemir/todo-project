@@ -3,56 +3,61 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { testemail, testpassword } from "@/validation/validationsignup";
-import {signIn} from "next-auth/react"
+import { signIn, useSession } from "next-auth/react";
 export default function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
   const [emailerr, setEmailerr] = useState(false);
   const [passerr, setPasserr] = useState(false);
-const [emoji,setemoji]=useState(true)
-const checkinputs = () => {
-  if (testemail(email)) {
-    setEmailerr(false);
-  } else {
-    if (email === "") {
+  const [emoji, setemoji] = useState(true);
+  const { status } = useSession();
+  useEffect(() => {
+    if (status === "authenticated") router.replace("/");
+  }, [status]);
+  const checkinputs = () => {
+    if (testemail(email)) {
       setEmailerr(false);
     } else {
-      setEmailerr(true);
+      if (email === "") {
+        setEmailerr(false);
+      } else {
+        setEmailerr(true);
+      }
     }
-  }
-  if (testpassword(password)) {
-    setPasserr(false);
-  } else {
-    if (password === "") {
+    if (testpassword(password)) {
       setPasserr(false);
     } else {
+      if (password === "") {
+        setPasserr(false);
+      } else {
+        setPasserr(true);
+      }
+    }
+  };
+  useEffect(() => {
+    checkinputs();
+  }, [email, password]);
+  useEffect(() => {
+    if (emailerr || passerr) {
+      setemoji(false);
+    } else {
+      setemoji(true);
+    }
+  }, [emailerr, passerr]);
+  const signinhandler = async () => {
+    if (testemail(email) && testpassword(password)) {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (!res.error) router.push("/");
+    } else {
+      setEmailerr(true);
       setPasserr(true);
     }
-  }
-  
-};
-useEffect(() => {
-  checkinputs();
-}, [email, password]);
-useEffect(()=>{
-  if(emailerr || passerr){
-      setemoji(false)
-     }else{
-      setemoji(true)
-     }
-},[emailerr,passerr])
-const signinhandler = async () => {
-  if (testemail(email) && testpassword(password)) {
-   const res = await signIn("credentials",{
-    email,password,redirect:false,
-   })
-   if(!res.error) router.push("/")
-  } else {
-    setEmailerr(true)
-    setPasserr(true)
-  }
-};
+  };
 
   return (
     <div className={styles.container}>

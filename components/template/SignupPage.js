@@ -3,13 +3,18 @@ import React, { useEffect, useState } from "react";
 import styles from "./SignupPage.module.css";
 import { useRouter } from "next/router";
 import { testemail, testpassword } from "@/validation/validationsignup";
+import { useSession } from "next-auth/react";
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
   const [emailerr, setEmailerr] = useState(false);
   const [passerr, setPasserr] = useState(false);
-const [emoji,setemoji]=useState(true)
+  const [emoji, setemoji] = useState(true);
+  const { status } = useSession();
+  useEffect(() => {
+    if (status === "authenticated") router.replace("/");
+  }, [status]);
   const checkinputs = () => {
     if (testemail(email)) {
       setEmailerr(false);
@@ -29,18 +34,17 @@ const [emoji,setemoji]=useState(true)
         setPasserr(true);
       }
     }
-    
   };
   useEffect(() => {
     checkinputs();
   }, [email, password]);
-  useEffect(()=>{
-    if(emailerr || passerr){
-        setemoji(false)
-       }else{
-        setemoji(true)
-       }
-  },[emailerr,passerr])
+  useEffect(() => {
+    if (emailerr || passerr) {
+      setemoji(false);
+    } else {
+      setemoji(true);
+    }
+  }, [emailerr, passerr]);
   const signuphandler = async () => {
     if (testemail(email) && testpassword(password)) {
       const res = await fetch("/api/auth/signup", {
@@ -54,11 +58,11 @@ const [emoji,setemoji]=useState(true)
       console.log(data);
       if (data.status === "success") router.push("/signin");
     } else {
-      setEmailerr(true)
-      setPasserr(true)
+      setEmailerr(true);
+      setPasserr(true);
     }
   };
-   
+
   return (
     <div className={styles.container}>
       <div className={styles.form}>
@@ -74,7 +78,7 @@ const [emoji,setemoji]=useState(true)
             setEmail(e.target.value);
           }}
         />
-        {emailerr ? (<p>enter a valid email</p>):null}
+        {emailerr ? <p>enter a valid email</p> : null}
         <input
           className={passerr ? styles.inperr : null}
           type="password"
@@ -85,9 +89,9 @@ const [emoji,setemoji]=useState(true)
             setPassword(e.target.value);
           }}
         />
-        {passerr ? (<p>enter a password 8 to 40 letter</p>):null}
+        {passerr ? <p>enter a password 8 to 40 letter</p> : null}
 
-        <button onClick={signuphandler}>Register {emoji? (":)"):(":(")} </button>
+        <button onClick={signuphandler}>Register {emoji ? ":)" : ":("} </button>
 
         <h3>
           Have a acount alredy? <Link href={"/signin"}>Sign In</Link>

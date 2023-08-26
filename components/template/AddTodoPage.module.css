@@ -1,0 +1,57 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.todocon {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--palet4);
+  color: var(--white);
+  padding: 30px 20px;
+  border-radius: 6px;
+  box-shadow: var(--boxshadow);
+  max-width: 75%;
+}
+.todocon h3 {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.title label {
+  margin-right: 10px;
+}
+.title input {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.status {
+  padding: 20px 0;
+}
+.btn{
+  padding: 10px 20px;
+  margin-top: 15px;
+  font-size: 17px;
+  font-weight: 700;
+  background-color: var(--palet2);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .container {
+    justify-content: flex-start;
+  }
+  .todocon {
+    margin-left: 30px;
+    max-width: unset;
+    min-width: 400px;
+  }
+  .title > input {
+    min-width: 70%;
+  }
+}

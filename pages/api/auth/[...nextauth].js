@@ -1,13 +1,13 @@
 import NextAuth from "next-auth";
-import CredentialsPriveder from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import TodoUser from "@/models/TodoUser";
 import { verifypassword } from "@/utils/Auth";
 import ConnectDB from "@/utils/ConnectDB";
 
 const authOptions = {
-  session: { strategy: "jwt" },
+  session:{strategy:"jwt"},
   providers: [
-    CredentialsPriveder({
+    CredentialsProvider({
       async authorize(credentials, req) {
         const { email, password } = credentials;
 

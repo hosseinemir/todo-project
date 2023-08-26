@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin-bottom: 40px;
+  margin: 10px;
+}
+.container > div p {
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+}
+.todocon > p {
+  background-color: var(--todo1);
+}
+.inprocon > p {
+  background-color: var(--todo2);
+}
+.reviewcon > p {
+  background-color: var(--todo3);
+}
+.donecon > p {
+  background-color: var(--todo4);
+}
+@media only screen and (min-width: 468px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 768px) {
+}
+@media only screen and (min-width: 1280px) {
+  .container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 22%;
+    margin-bottom: 40px;
+  }
+}

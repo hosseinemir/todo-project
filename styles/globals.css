@@ -47,3 +47,45 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.todo1{
+	background-color: var(--todo1);
+}
+.todo2{
+	background-color: var(--todo2);
+}
+.todo3{
+	background-color: var(--todo3);
+}
+.todo4{
+	background-color: var(--todo4);
+}
+.todo1btn{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 10px 0;
+
+}
+.todo2btn{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0;
+}
+.todo3btn{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0;
+
+}
+.todo4btn{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 10px 0;
+}
