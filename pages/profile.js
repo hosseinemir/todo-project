@@ -1,17 +1,14 @@
-import HomePage from "@/components/template/HomePage";
+import ProfilePage from "@/components/template/ProfilePage";
 import { getSession } from "next-auth/react";
 
 
-
-
-export default function Home() {
+export default function profile() {
   return (
     <>
-     <HomePage/>
+    <ProfilePage/>
     </>
   )
 }
-
 export async function  getServerSideProps({req}){
   const session = await getSession({req})
 

@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       .json({ status: "failed", message: "user dosent exsit" });
   }
   if (req.method === "POST") {
-    const { name, lastname, password } = req.body;
+    const { name, lastName, password } = req.body;
     const isvalid = await verifypassword(password, user.password);
     if (!isvalid) {
       return res
@@ -35,12 +35,14 @@ export default async function handler(req, res) {
         .json({ status: "failed", message: "wrong password" });
     }
     user.name = name;
-    user.lastname = lastname;
+    user.lastname = lastName;
     user.save();
     return res.status(200).json({
       status: "success",
       message: "data updated!",
-      data:{name,lastname,email:session.user.email}
+      data:{name,lastName,email:session.user.email}
     });
+  }else if(req.method === "GET"){
+    return res.status(200).json({status:"success",data:{name:user.name ,lastname:user.lastname,email:user.email}})
   }
 }

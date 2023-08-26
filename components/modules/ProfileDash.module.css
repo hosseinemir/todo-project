@@ -1,0 +1,40 @@
+.main{
+ display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width:70%;
+  background-color: var(--palet2);
+  padding: 20px 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.con{
+     display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 20px 5px;
+  font-weight: 700;
+  font-size: 19px;
+}
+.btn {
+    padding: 8px 20px;
+    border: none;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: var(--backbtn);
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+@media only screen and (min-width: 768px) {
+    .main{
+        width: 60%;
+    }
+}
+@media only screen and (min-width: 1280px) {
+    .main{
+        width: 35%;
+    }
+}

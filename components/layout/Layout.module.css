@@ -6,12 +6,28 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 25px 0;
+  padding: 15px 0;
   color: var(--white);
   font-size: 20px;
   font-weight: 600;
   z-index: 900;
   background-color: var(--palet3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header button{
+  margin-right: 30px;
+}
+.header button , .header button a{
+  text-decoration: none;
+  border: none;
+  background-color: var(--backbtn);
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
 }
 .header p{
     margin-left: 15px;

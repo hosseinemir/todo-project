@@ -1,0 +1,14 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.container h4{
+    font-weight: 700;
+
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+}
