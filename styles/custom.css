@@ -1,10 +1,10 @@
-:root{
-    --white:#fff,
-    --black:#000,
-    --boxshadow: 0 0 20px -10px rgb(0,0,0,0.8);
-    --palet1:#f6f5f5;
-    --palet2:#d3e0ea;
-    --palet3:#1687a7;
-    --palet4:#276678;
-
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --boxshadow: 0 0 20px -10px rgb(0, 0, 0, 0.8);
+  --palet1: #f6f5f5;
+  --palet2: #d3e0ea;
+  --palet3: #1687a7;
+  --palet4: #276678;
+  --iconcolor: #484848;
 }
