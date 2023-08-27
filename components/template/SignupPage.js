@@ -75,7 +75,7 @@ export default function SignupPage() {
           placeholder=" your email"
           value={email}
           onChange={(e) => {
-            setEmail(e.target.value);
+            setEmail(e.target.value.toLowerCase());
           }}
         />
         {emailerr ? <p>enter a valid email</p> : null}

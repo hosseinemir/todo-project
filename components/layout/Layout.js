@@ -37,26 +37,26 @@ export default function Layout({ children }) {
             <>
             <li>
               <VscListSelection />
-              <Link href={"/"}>todos</Link>
+              <Link href={"/"} onClick={() => menuhandler("close")}>todos</Link>
             </li>
             <li>
               <BiMessageSquareAdd />
-              <Link href={"/add-todo"}>add todo</Link>
+              <Link href={"/add-todo"} onClick={() => menuhandler("close")}>add todo</Link>
             </li>
             <li>
               <RxDashboard />
-              <Link href={"/profile"}>profile</Link>
+              <Link href={"/profile"} onClick={() => menuhandler("close")}>profile</Link>
             </li>
             </>
            ):(
             <>
             <li>
               <PiSignInFill />
-              <Link href={"/signin"}>Sign In</Link>
+              <Link href={"/signin"} onClick={() => menuhandler("close")}>Sign In</Link>
             </li>
             <li>
               <MdOutlineCreateNewFolder />
-              <Link href={"/signup"}>Sign Up</Link>
+              <Link href={"/signup"} onClick={() => menuhandler("close")}>Sign Up</Link>
             </li>
             </>
            )}
