@@ -26,7 +26,7 @@ const authOptions = {
         return { email };
       },
     }),
-  ],
+  ],secret: process.env.SECRET_KEY,
 };
 
 export default NextAuth(authOptions);
