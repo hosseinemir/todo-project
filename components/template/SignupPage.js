@@ -4,6 +4,7 @@ import styles from "./SignupPage.module.css";
 import { useRouter } from "next/router";
 import { testemail, testpassword } from "@/validation/validationsignup";
 import { useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,7 +57,15 @@ export default function SignupPage() {
       });
       const data = await res.json();
       console.log(data);
-      if (data.status === "success") router.push("/signin");
+      if (data.status === "success"){
+        const ressignin = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+        });
+        if (!ressignin.error) router.push("/");
+        
+      }
     } else {
       setEmailerr(true);
       setPasserr(true);
