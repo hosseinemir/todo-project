@@ -15,6 +15,7 @@
   margin: 10px 0;
   width: 80%;
   box-shadow: 0 0 10px -5px rgb(0, 0, 0,0.6);
+  
 }
 .todocon h3{
   font-weight: 700;
@@ -26,6 +27,16 @@
   width: 70%;
   height: 4px;
   margin: 2px 0 14px 0;
+}
+.trash{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon{
+  cursor: pointer;
+  font-size: 18px;
 }
 .backbtn ,.nextbtn{
   padding: 5px 10px;

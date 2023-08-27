@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function AddTodoPage() {
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("todo");
+  const [details, setdatails] = useState("");
 
   const addtodohandler = async () => {
     const res = await fetch("/api/todos", {
@@ -19,13 +20,14 @@ export default function AddTodoPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title, status }),
+      body: JSON.stringify({ title, status,details }),
     });
     const data = await res.json();
     console.log(data);
     if (data.status === "success") {
       setTitle("");
       setStatus("todo");
+      setdatails("")
       toast.success("todo added !");
     }else{
         toast.error("not added")
@@ -42,6 +44,15 @@ export default function AddTodoPage() {
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className={styles.title}>
+          <label htmlFor="details">Details:</label>
+          <textarea
+            type="text"
+            name="details"
+            value={details}
+            onChange={(e) => setdatails(e.target.value)}
           />
         </div>
         <div className={styles.status}>

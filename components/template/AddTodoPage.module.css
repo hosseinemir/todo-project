@@ -21,6 +21,11 @@
   font-size: 18px;
   margin-bottom: 15px;
 }
+.title{
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
 .title label {
   margin-right: 10px;
 }
@@ -28,6 +33,13 @@
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
+}
+.title textarea{
+  
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  min-height: 60px;
 }
 .status {
   padding: 20px 0;

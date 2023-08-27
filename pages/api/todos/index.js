@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   }
 
   const session = await getSession({ req });
-  
+
   if (!session) {
     return res
       .status(401)
@@ -28,29 +28,33 @@ export default async function handler(req, res) {
       .json({ status: "failed", message: "user dosent exsit" });
   }
   if (req.method === "POST") {
-    const { title, status } = req.body;
+    const { title, status,details } = req.body;
     if (!title || !status) {
       return res
         .status(401)
         .json({ status: "failed", message: "invalid data" });
     }
-    user.todos.push({title,status});
-    user.save()
-  return res.status(201).json({ status: "success", message: "todo add succesfuly" });
+    user.todos.push({ title, status ,details});
+    user.save();
+    return res
+      .status(201)
+      .json({ status: "success", message: "todo add succesfuly" });
+  } else if (req.method === "GET") {
+    const sortdata = SortData(user.todos);
+    return res.status(200).json({ status: "success", data: sortdata });
+  } else if (req.method === "PATCH") {
+    const { id, status } = req.body;
 
-  }else if(req.method=== "GET"){
-    const sortdata = SortData(user.todos)
-    return res.status(200).json({status:"success",data:sortdata})
-  }else if(req.method === "PATCH"){
-    const {id,status}=req.body;
-
-    if(!id||!status){
-      return res.status(422).json({status:"failed",message:"invalid data"})
+    if (!id || !status) {
+      return res
+        .status(422)
+        .json({ status: "failed", message: "invalid data" });
     }
-    const result = await TodoUser.updateOne({"todos._id":id},{$set:{"todos.$.status":status}})
+    const result = await TodoUser.updateOne(
+      { "todos._id": id },
+      { $set: { "todos.$.status": status } }
+    );
 
-    return res.status(200).json({status:"success",message:"done"})
-
-  }
-  
+    return res.status(200).json({ status: "success", message: "done" });
+  } 
 }

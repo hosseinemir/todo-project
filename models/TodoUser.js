@@ -18,7 +18,7 @@ const todouserschema= new Schema({
         default: ()=> Date.now(),
         immutable:true,
     },
-    todos:[{title:String,status:String}]
+    todos:[{title:String,status:String,details:String}]
 
 })
 

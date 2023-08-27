@@ -1,0 +1,38 @@
+.container{
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container p{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.con{
+    width: 75%;
+    background-color: var(--palet3);
+    color: var(--white);
+    max-width: 500px;
+    padding: 30px 15px ;
+    border-radius: 5px;
+    box-shadow: var(--boxshadow);
+}
+.btn{
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 17px;
+    font-weight: 700;
+    background-color: var(--palet2);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+}
+@media only screen and (min-width: 768px) {
+   .container{
+    justify-content: flex-start;
+   }
+  }
+  

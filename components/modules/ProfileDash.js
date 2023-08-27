@@ -1,5 +1,10 @@
+import { useRouter } from 'next/router';
 import styles from './ProfileDash.module.css'
 export default function ProfileDash({data}) {
+  const router=useRouter()
+  const gotoedit=()=>{
+    router.push('/editprofile')
+  }
   return (
     <div className={styles.main}>
         <div className={styles.con}>
@@ -14,7 +19,7 @@ export default function ProfileDash({data}) {
             <p>email:</p>
             <p>{data.email}</p>
         </div>
-        <button className={styles.btn}>Edit</button>
+        <button className={styles.btn} onClick={gotoedit}>Edit</button>
       
     </div>
   );

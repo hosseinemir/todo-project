@@ -44,5 +44,22 @@ export default async function handler(req, res) {
     });
   }else if(req.method === "GET"){
     return res.status(200).json({status:"success",data:{name:user.name ,lastname:user.lastname,email:user.email}})
+  }else if(req.method === "PATCH"){
+    const { name, lastName, password } = req.body;
+    const isvalid = await verifypassword(password, user.password);
+    if (!isvalid) {
+      return res
+        .status(422)
+        .json({ status: "failed", message: "wrong password" });
+    }
+    const result =await TodoUser.updateOne({email:session.user.email},{$set:{name,lastname:lastName}})
+    // user.name = name;
+    // user.lastname = lastName;
+    // user.save();
+    return res.status(200).json({
+      status: "success",
+      message: "data updated!",
+      data:{name,lastName,email:session.user.email}
+    });
   }
 }
